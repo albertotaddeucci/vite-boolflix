@@ -29,6 +29,12 @@ export default {
         .then(res =>{
           
           this.store.movies = res.data.results
+
+          this.store.movies.forEach(el => {
+            el.vote_average = this.convertTo5(el.vote_average)
+
+            
+          });
         
         
         }),
@@ -36,14 +42,25 @@ export default {
         .then(result =>{
           
           this.store.tvs = result.data.results
+
+          this.store.tvs.forEach(el => {
+            el.vote_average = this.convertTo5(el.vote_average)
+            
+          });
         
         
         })
         
 
-
+      },
+  
+      //arrotondamento e conversione voto max da 10 a 5
+      convertTo5(num){
+        return Math.round(num)*5 / 10
 
       }
+
+
     }
 
     
