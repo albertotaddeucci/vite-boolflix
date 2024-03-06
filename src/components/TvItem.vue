@@ -26,7 +26,7 @@ export default {
 
     <div id="tv-info">
 
-        <img src="" alt="">
+        <img :src="store.url + tv.poster_path" alt="">
 
         <div>
             Titolo: {{ tv.name }}

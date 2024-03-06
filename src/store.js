@@ -7,6 +7,8 @@ export const store = reactive({
 
     movieToSearch: '',
 
+    url: "https://image.tmdb.org/t/p/w342" 
+
 
 
 

@@ -11,7 +11,8 @@ export default {
 
     data() {
         return {
-            store,            
+            store,  
+                     
             
         }
     },
@@ -26,7 +27,8 @@ export default {
 
     <div id="movie-info">
 
-        <img src="" alt="">
+
+        <img :src="store.url + movie.poster_path" alt="">
 
         <div>
             Titolo: {{ movie.title }}
