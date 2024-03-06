@@ -1,7 +1,19 @@
 <script>
 
+import {store} from '../store.js'
+
+
 export default {
     name: "AppSearch",    
+
+    data(){
+      return{
+         store,    
+                  
+
+      }
+  },
+
     
 }
 
@@ -11,8 +23,8 @@ export default {
 <template>
 
     <div>
-        <input type="text">
-        <button>Cerca</button>
+        <input type="search" v-model="store.movieToSearch">
+        <button @click="$emit('search')">Cerca</button>
     </div>
     
 

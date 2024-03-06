@@ -1,11 +1,11 @@
 <script>
-import FilmItem from './FilmItem.vue';
+import MovieItem from './MovieItem.vue';
 
 export default {
     name: "AppMain",
     
     components: {
-        FilmItem
+        MovieItem,
     }
 
     
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <FilmItem></FilmItem>
+    <MovieItem></MovieItem>
 
 </template>
 
