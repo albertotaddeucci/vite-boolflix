@@ -31,7 +31,9 @@ export default {
           this.store.movies = res.data.results
 
           this.store.movies.forEach(el => {
-            el.vote_average = this.convertTo5(el.vote_average)
+            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
+            
+
 
             
           });
@@ -44,7 +46,7 @@ export default {
           this.store.tvs = result.data.results
 
           this.store.tvs.forEach(el => {
-            el.vote_average = this.convertTo5(el.vote_average)
+            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
             
           });
         
@@ -56,8 +58,21 @@ export default {
   
       //arrotondamento e conversione voto max da 10 a 5
       convertTo5(num){
-        return Math.round(num)*5 / 10
+        return Math.round(num)/2
 
+      },
+
+      //trasformazione da numero a stelle
+      transformToStar(num){
+        let i = 0;
+        let star = "";
+        while (i < num) {
+          star += "⭐";          
+          i++;
+          
+        };
+
+        return star
       }
 
 

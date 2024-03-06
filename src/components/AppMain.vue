@@ -26,19 +26,47 @@ export default {
 </script>
 
 <template>
-    <MovieItem 
-    v-for="currentMovie in store.movies"  
-    :movie="currentMovie"
-    ></MovieItem>
 
-    <TvItem 
-    v-for="currentTv in store.tvs"  
-    :tv="currentTv"
-    ></TvItem>
+    <div class="container">
+
+        <h2>Movies</h2>
+
+        <div class="item-list">
+            <MovieItem
+            v-for="currentMovie in store.movies"  
+            :movie="currentMovie"
+            ></MovieItem>
+    
+    
+        </div>
+
+        <h2>Tv Series</h2>
+    
+        <div class="item-list">
+            <TvItem
+            v-for="currentTv in store.tvs"  
+            :tv="currentTv"
+            ></TvItem>
+
+        </div>
+
+    </div>
 
 </template>
 
-<style>
+<style lang="scss">
+@use '../styles/general' as *;
+
+.item-list {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+
+    padding: 20px;
+}
+
+
+
 
 
 </style>

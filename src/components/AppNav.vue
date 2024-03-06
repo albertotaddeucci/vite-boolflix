@@ -12,11 +12,21 @@ export default {
 
 <template>
 
-    
+    <nav>
+        <img src="" alt="">
+    </nav>
 
 </template>
 
 <style>
+
+nav{
+    padding: 30px;
+    
+    background-color: black;
+}
+
+
 
 
 </style>
