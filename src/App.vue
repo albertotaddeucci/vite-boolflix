@@ -1,12 +1,17 @@
 <script>
+import axios from 'axios';
+
 import {store} from './store.js'
+
 import AppNav from './components/AppNav.vue';
 import AppMain from './components/AppMain.vue';
+import AppSearch from './components/AppSearch.vue';
 
 export default {
     components:{
       AppNav,
-      AppMain
+      AppMain,
+      AppSearch,
     },
 
     
@@ -17,8 +22,22 @@ export default {
         }
     },
 
-    
+    created(){
+  
+      axios.get()
+      .then(res =>{
+        // this.store.films 
+        
+        
+        })
+
+      
+    },
+
 }
+
+    
+
 
 
 </script>
@@ -26,6 +45,7 @@ export default {
 <template>
 
   <AppNav></AppNav>
+  <AppSearch></AppSearch>
   <AppMain></AppMain>
 
 

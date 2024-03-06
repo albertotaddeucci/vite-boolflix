@@ -1,10 +1,9 @@
 <script>
 
 export default {
-    name: "AppNav",
+    name: "FIlmItem",
 
-    
-    
+        
 }
 
 
@@ -12,7 +11,10 @@ export default {
 
 <template>
 
-    
+    <div id="film-info">
+
+    </div>
+
 
 </template>
 
