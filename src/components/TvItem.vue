@@ -3,10 +3,10 @@ import {store} from '../store.js'
 
 
 export default {
-    name: "MovieItem",
+    name: "TvItem",
     
     props:{
-        movie: Object,
+        tv: Object,
     },
 
     data() {
@@ -24,20 +24,20 @@ export default {
 
 <template>
 
-    <div id="movie-info">
+    <div id="tv-info">
 
         <img src="" alt="">
 
         <div>
-            Titolo: {{ movie.title }}
+            Titolo: {{ tv.name }}
         </div>        
         <div>
-            Lingua: {{ movie.original_language }}            
+            Lingua: {{ tv.original_language }}            
             
 
         </div>
         <div>
-            Voto: {{ movie.vote_average }}
+            Voto: {{ tv.vote_average }}
         </div>
 
         
