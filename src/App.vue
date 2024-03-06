@@ -28,12 +28,20 @@ export default {
         axios.get('https://api.themoviedb.org/3/search/movie?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(res =>{
           
-          console.log(res.data.results)
-
           this.store.movies = res.data.results
         
         
+        }),
+        axios.get('https://api.themoviedb.org/3/search/tv?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
+        .then(result =>{
+          
+          this.store.tvs = result.data.results
+        
+        
         })
+        
+
+
 
       }
     }
