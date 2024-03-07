@@ -43,7 +43,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/_mixins' as *;
+@use '../styles/mixins' as *;
 
 .container{
     display: flex;

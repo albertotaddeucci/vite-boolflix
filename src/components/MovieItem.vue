@@ -1,4 +1,5 @@
 <script>
+import jsonFlags from '../data/all-flags.json'
 import {store} from '../store.js'
 
 
@@ -13,16 +14,29 @@ export default {
         return {
             store, 
             
+            
+            
                      
             
         }
     },
 
     methods:{
-        getFlag(flag){
-            const url = "https://flagcdn.com/16x12/ua.png"
-            const newUrl = url.slice(0,-6) + flag + ".png"
-            return newUrl
+        getFlag(flag){   
+            
+            const key = flag
+            if(this.flagName.hasOwnProperty(key)){
+                const url = "https://flagcdn.com/16x12/ua.png"
+                this.newUrl = url.slice(0,-6) + flag + ".png"
+                
+                return this.newUrl
+
+            } else {
+                return this.newUrl =""
+            }
+
+            
+             
         }
     }
 
@@ -50,15 +64,21 @@ export default {
                 Titolo originale: {{ movie.original_title }}               
     
             </div>       
-            <div>
+            <div class="language">
 
-                <img :src="this.getFlag(movie.original_language)"            
-                >
-                Lingua: {{ movie.original_language }}               
+                <div v-show="this.newUrl !=''">
+                    <img  :src="this.getFlag(movie.original_language)" > 
+
+                </div>
+                <div v-show="this.newUrl ==''">
+                    Lingua: {{ movie.original_language }}               
+
+                </div>     
+                
     
             </div>
             <div>
-                Voto: {{ movie.vote_average }}
+                {{ movie.vote_average }}
 
             </div>
     
@@ -82,6 +102,9 @@ export default {
 }
 
 #item-info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     
     position: absolute;
     top: 0;
@@ -98,6 +121,16 @@ export default {
     transition: opacity 0.2s linear;
     
     text-align: center;
+
+
+    .language{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+            width: 16px;
+        }
+    }
 }
 
 #item-info:hover{
