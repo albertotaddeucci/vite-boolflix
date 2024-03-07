@@ -35,7 +35,6 @@ export default {
 
           this.store.movies.forEach(el => {
             el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
-            console.log(el.genre_ids)    
             
            
             
@@ -77,21 +76,39 @@ export default {
       },
       
 
-      // filterMovie(){
-      //   console.log("ciao")
-      //   store.movies.forEach(element => {
+      filterMovie(){
 
+        store.movieFiltered=[];
+        store.tvFiltered=[];
+               
+        axios.get('https://api.themoviedb.org/3/search/multi?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
+        .then(res =>{
+        
+          this.store.allItems = res.data.results
 
-      //     store.filtered.push(element.genre_ids.includes(store.selected))
-
-      //     console.log(store.filtered)
           
+          this.store.allItems.forEach(element => {
+            
+            if(element.genre_ids.includes(store.selected) && element.media_type=="movie"){  
+              store.movieFiltered.push(element)
+              
+            } else if(element.genre_ids.includes(store.selected) && element.media_type=="tv"){
+              store.tvFiltered.push(element)
+            }
+            
+          });
+
+          this.store.movieFiltered.forEach(el => {
+            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
+
+          });
           
-      //   });
+          return this.store.movies=this.store.movieFiltered, this.store.tvs=this.store.tvFiltered
+          
+        })   
 
 
-
-      // },
+      },
   
       //arrotondamento e conversione voto max da 10 a 5
       convertTo5(num){
@@ -116,15 +133,31 @@ export default {
     },
 
     created(){
+      let movieGenres
+      let tvGenres
+      let allGenres
   
-       axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+      axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
-          console.log(res.data.genres)
-          // console.log(store.selected)
-          this.store.genres = res.data.genres
+          store.genres = res.data.genres
+
+      })
+      // axios.get(`https://api.themoviedb.org/3/genre/tv/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+      //   .then(res =>{
+      //     tvGenres = res.data.genres
+      //     console.log(tvGenres)
+
+          
+          
+      //     allGenres = movieGenres.concat(tvGenres)
+      //     store.genres = allGenres.filter((el,index)=>{ store.genres.indexOf(el)==index})
+
+          
+      //     console.log(store.genres)
+      // })
 
 
-        })
+      
 
         
     }
@@ -144,7 +177,7 @@ export default {
 <template>
 
   <AppHeader @search="serchMovie" ></AppHeader>
-  <AppMain @info="movieInfo" ></AppMain>
+  <AppMain @info="movieInfo" @filter="filterMovie" ></AppMain>
 
 
 </template>

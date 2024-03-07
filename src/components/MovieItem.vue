@@ -87,7 +87,7 @@ export default {
             <div class="label">
                 <div class="genre">
                     Generi:
-                    <ul class="genre-list" v-for="genre,index in store.genres"> 
+                    <ul class="genre-list" v-for="genre in store.genres"> 
                         
                         <li v-show="movie.genre_ids.includes(genre.id)">
                             {{genre.name}}
@@ -112,6 +112,7 @@ export default {
                 {{ movie.vote_average }}
 
             </div>
+            
             
     
             

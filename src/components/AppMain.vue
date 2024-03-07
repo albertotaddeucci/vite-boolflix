@@ -30,13 +30,13 @@ export default {
     <div class="container">
 
         
-        <!-- <div>
+        <div>
             <select id="select" v-model="store.selected" @change="$emit('filter')" >
                 <option disabled value="">Seleziona un genere</option>
                 <option  v-for="genre in store.genres" :value="genre.id">{{genre.name}}</option>
                 
             </select>
-        </div> -->
+        </div>
         <div v-show="store.movies.length!=0">
             <h2>Movies</h2>
             <div class="item-list">

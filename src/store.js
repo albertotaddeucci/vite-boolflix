@@ -2,6 +2,7 @@ import { reactive } from 'vue'
 
 export const store = reactive({
 
+    allItems: [],
     movies: [],
     tvs: [],
 
@@ -12,7 +13,12 @@ export const store = reactive({
     tvCast: [],
 
     genres: [],
-    selected: '',
+    selected: 0,
+
+    movieFiltered: [],
+    tvFiltered: [],
+
+    stars: [],
 
 
     movieToSearch: '',
