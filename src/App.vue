@@ -34,15 +34,17 @@ export default {
           this.store.movies = res.data.results
 
           this.store.movies.forEach(el => {
-            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
+            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
+            console.log(el.genre_ids)    
             
-            
+           
             
           });
-          
-          console.log(res.data.results)
+
+        
         
         }),
+
         axios.get('https://api.themoviedb.org/3/search/tv?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(result =>{
           
@@ -64,8 +66,7 @@ export default {
         
         axios.get(`https://api.themoviedb.org/3/movie/${store.movieId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
-          store.movieCast = res.data.cast.slice(0,5)
-          
+          store.movieCast = res.data.cast.slice(0,5)         
         
         
         });
@@ -114,19 +115,19 @@ export default {
 
     },
 
-    // created(){
+    created(){
   
-    //    axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
-    //     .then(res =>{
-    //       console.log(res.data.genres)
-    //       // console.log(store.selected)
-    //       this.store.genres = res.data.genres
+       axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        .then(res =>{
+          console.log(res.data.genres)
+          // console.log(store.selected)
+          this.store.genres = res.data.genres
 
 
-    //     })
+        })
 
         
-    // }
+    }
     
     
 

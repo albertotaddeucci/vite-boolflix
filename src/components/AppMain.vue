@@ -29,8 +29,7 @@ export default {
 
     <div class="container">
 
-        <h2>Movies</h2>
-
+        
         <!-- <div>
             <select id="select" v-model="store.selected" @change="$emit('filter')" >
                 <option disabled value="">Seleziona un genere</option>
@@ -38,29 +37,33 @@ export default {
                 
             </select>
         </div> -->
+        <div v-show="store.movies.length!=0">
+            <h2>Movies</h2>
+            <div class="item-list">
+                <MovieItem
+                v-for="currentMovie in store.movies" 
+                :movie="currentMovie"
+                @mouseenter="$emit('info')"
+                >
+                </MovieItem>            
+            
+            </div>
 
-        <div class="item-list">
-            <MovieItem
-            v-for="currentMovie in store.movies" 
-            :movie="currentMovie"
-            @mouseenter="$emit('info')"
-            >
-            </MovieItem>
-        
-        
         </div>
-
-        <h2>Tv Series</h2>
-
-
-        <div class="item-list">
-            <MovieItem
-            v-for="currentTv in store.tvs" 
-            :movie="currentTv"
-            @mouseenter="$emit('info')"
-            >
-            </MovieItem>        
         
+        <div v-show="store.tvs.length!=0">
+            <h2>Tv Series</h2>
+            <div class="item-list">
+                <MovieItem
+                v-for="currentTv in store.tvs" 
+                :movie="currentTv"
+                @mouseenter="$emit('info')"
+                >
+                </MovieItem>        
+            
+            </div>           
+            
+
         </div>
 
         

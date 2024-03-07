@@ -40,6 +40,10 @@ export default {
 
             store.movieId = num
             
+        },
+
+        prova(text){
+            store.movies
         }
     }
 
@@ -78,7 +82,21 @@ export default {
                 </div>     
                 
     
-            </div>      
+            </div> 
+            
+            <div class="label">
+                <div class="genre">
+                    Generi:
+                    <ul class="genre-list" v-for="genre,index in store.genres"> 
+                        
+                        <li v-show="movie.genre_ids.includes(genre.id)">
+                            {{genre.name}}
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
             
             <div class="label center">
                 <div class="cast">
@@ -142,17 +160,19 @@ export default {
             font-size: 1.2em;
         }
     }
-
+    
     .label.center{
         padding-top: 20px;
-
+        
         text-align: center;
-
         .cast{
             display: flex;
             flex-direction: column;
             gap: 10px;
+    
+           
         }
+        
     }
 
 
@@ -162,8 +182,17 @@ export default {
         align-items: center;
 
         padding-top: 20px;
-        img{
-            // width: 16px;
+        
+    }
+
+    .label
+    
+        .genre{
+         ul{
+           list-style: none;
+           color: white;
+           padding-left: 10px;
+    
         }
     }
 
@@ -174,6 +203,10 @@ export default {
         bottom: 0px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .genre-list{
+        display: flex;
     }
 
 
