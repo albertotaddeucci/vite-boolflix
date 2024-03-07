@@ -3,15 +3,13 @@ import axios from 'axios';
 
 import {store} from './store.js'
 
-import AppNav from './components/AppNav.vue';
+import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import AppSearch from './components/AppSearch.vue';
 
 export default {
     components:{
-      AppNav,
       AppMain,
-      AppSearch,
+      AppHeader,
     },
 
     
@@ -95,8 +93,7 @@ export default {
 
 <template>
 
-  <AppNav></AppNav>
-  <AppSearch @search="serchMovie"></AppSearch>
+  <AppHeader @search="serchMovie"></AppHeader>
   <AppMain></AppMain>
 
 

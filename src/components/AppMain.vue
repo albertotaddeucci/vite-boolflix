@@ -57,6 +57,12 @@ export default {
 <style lang="scss">
 @use '../styles/general' as *;
 
+h2 {
+    margin-top: 30px;
+    font-size: 30px;
+    color: red;
+}
+
 .item-list {
     display: flex;
     gap: 30px;
