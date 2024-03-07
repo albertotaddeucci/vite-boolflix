@@ -13,7 +13,8 @@ export default {
     data() {
         return {
             store, 
-            
+            flagName: jsonFlags,
+            newUrl: "", 
             
             
                      
