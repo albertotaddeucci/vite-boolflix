@@ -15,7 +15,8 @@ export default {
 
     data() {
         return {
-            store,            
+            store, 
+            
             
         }
     },
@@ -33,11 +34,13 @@ export default {
 
         <div class="item-list">
             <MovieItem
-            v-for="currentMovie in store.movies"  
+            v-for="currentMovie in store.movies" 
             :movie="currentMovie"
-            ></MovieItem>
-    
-    
+            @mouseenter="$emit('info')"
+            >
+            </MovieItem>
+        
+        
         </div>
 
         <h2>Tv Series</h2>
@@ -46,9 +49,11 @@ export default {
             <TvItem
             v-for="currentTv in store.tvs"  
             :tv="currentTv"
+            @mouseenter="$emit('tvInfo')"
             ></TvItem>
 
         </div>
+
 
     </div>
 

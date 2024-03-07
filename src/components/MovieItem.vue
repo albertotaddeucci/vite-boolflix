@@ -8,6 +8,7 @@ export default {
     
     props:{
         movie: Object,
+        
     },
 
     data() {
@@ -34,10 +35,14 @@ export default {
 
             } else {
                 return this.newUrl =""
-            }
-
-            
+            }            
              
+        },
+
+        getId(num){
+
+            store.movieId = num
+            
         }
     }
 
@@ -51,11 +56,12 @@ export default {
 
 <template>
 
-    <div class="item">
+    <div class="item" @mouseenter="this.getId(movie.id)">
         
         <img :src="store.url + movie.poster_path" alt="">
 
         <div id="item-info">
+            
     
             <div>
                 Titolo: {{ movie.title }}
@@ -82,6 +88,7 @@ export default {
                 {{ movie.vote_average }}
 
             </div>
+            <span v-for="actor in store.movieCast"> {{ actor.name }}</span>
     
             
         </div>
@@ -95,7 +102,6 @@ export default {
 
 .item{
     position: relative;
-    background-color: red;
 
     img{
         display: block;
@@ -116,7 +122,7 @@ export default {
     padding: 5px;
     margin-bottom: 5px;
 
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     opacity: 0;
     transition: opacity 0.2s linear;

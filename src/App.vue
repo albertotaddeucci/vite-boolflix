@@ -20,6 +20,8 @@ export default {
         }
     },
 
+    
+
     methods:{
       
       serchMovie(){
@@ -54,6 +56,33 @@ export default {
         
         })
         
+        
+      },
+
+      movieInfo(){
+
+        
+        axios.get(`https://api.themoviedb.org/3/movie/${store.movieId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        .then(res =>{
+          
+         store.movieCast = res.data.cast.slice(0,5)
+        
+        
+        })
+        
+        
+
+      },
+      tvInfo(){
+        axios.get(`https://api.themoviedb.org/3/tv/${store.tvId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        .then(result =>{
+          
+         store.tvCast = result.data.cast.slice(0,5)
+         
+
+        
+        
+        })
 
       },
   
@@ -94,7 +123,7 @@ export default {
 <template>
 
   <AppHeader @search="serchMovie"></AppHeader>
-  <AppMain></AppMain>
+  <AppMain @info="movieInfo" @tvInfo="tvInfo"></AppMain>
 
 
 </template>

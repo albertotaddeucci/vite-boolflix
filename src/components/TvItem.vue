@@ -8,6 +8,7 @@ export default {
     
     props:{
         tv: Object,
+        
     },
 
     data() {
@@ -34,6 +35,10 @@ export default {
 
             
              
+        },
+        getId(num){
+            store.tvId = num
+
         }
     }
 
@@ -45,7 +50,7 @@ export default {
 
 <template>
 
-    <div class="item">
+    <div class="item" @mouseenter="this.getId(tv.id)">
 
         <img :src="store.url + tv.poster_path" alt="">
 
@@ -61,7 +66,7 @@ export default {
             <div class="language">
 
                 <div v-show="this.newUrl !=''">
-                    <img  :src="this.getFlag(tv.original_language)" > 
+                    <img :src="this.getFlag(tv.original_language)" > 
 
                 </div>
                 <div v-show="this.newUrl ==''">
@@ -71,6 +76,12 @@ export default {
                 
     
             </div>
+            <div>
+                {{ tv.vote_average }}
+
+            </div>
+            <span v-for="actor in store.tvCast"> {{ actor.name }}</span>
+    
         
             
             

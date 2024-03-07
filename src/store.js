@@ -5,6 +5,14 @@ export const store = reactive({
     movies: [],
     tvs: [],
 
+    movieId: 0,
+    movieCast: [],
+
+    tvId: 0,
+    tvCast: [],
+
+
+
 
 
     movieToSearch: '',
