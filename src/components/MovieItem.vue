@@ -25,7 +25,7 @@ export default {
             
             const key = flag
             if(this.flagName.hasOwnProperty(key)){
-                const url = "https://flagcdn.com/16x12/ua.png"
+                const url = "https://flagcdn.com/32x24/ua.png"
                 this.newUrl = url.slice(0,-6) + flag + ".png"
                 
                 return this.newUrl
@@ -59,33 +59,42 @@ export default {
 
         <div id="item-info">          
     
-            <div>
-                Titolo: {{ movie.title ? movie.title : movie.name }}
+            <div class="label">
+                Titolo: <span>{{ movie.title ? movie.title : movie.name }}</span>
 
             </div> 
-            <div>
-                Titolo originale: {{ movie.original_title ? movie.original_title : movie.original_name }}               
+            <div class="label">
+                Titolo originale: <span>{{ movie.original_title ? movie.original_title : movie.original_name }}</span>               
     
-            </div>       
-            <div class="language">
+            </div> 
+            <div class="label language">
                 <div v-show="this.newUrl !=''">
                     <img  :src="this.getFlag(movie.original_language)" > 
 
                 </div>
                 <div v-show="this.newUrl ==''">
-                    Lingua: {{ movie.original_language }}               
+                    Lingua: <span>{{ movie.original_language }} </span>              
 
                 </div>     
                 
     
+            </div>      
+            
+            <div class="label center">
+                <div class="cast">
+                    Cast:
+                    <span v-for="actor in store.movieCast"> {{ actor.name }}</span>
+                    
+                </div>
+                
             </div>
-            <div>
+
+            
+            <div class="label vote">
                 {{ movie.vote_average }}
 
             </div>
-            <span v-for="actor in store.movieCast"> {{ actor.name }}</span>
-            <!-- <span v-for="actor in store.tvCast"> {{ actor.name }}</span> -->
-
+            
     
             
         </div>
@@ -99,24 +108,25 @@ export default {
 
 .item{
     position: relative;
+    width: 300px;
 
     img{
+        width: 100%;
+        object-fit: contain;
         display: block;
+        
     }
 }
 
 #item-info{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
+        
     position: absolute;
     top: 0;
 
     width: 100%;
     height: 100%;
 
-    padding: 5px;
+    padding: 15px;
     margin-bottom: 5px;
 
     background-color: rgba(0, 0, 0, 0.8);
@@ -124,28 +134,56 @@ export default {
     opacity: 0;
     transition: opacity 0.2s linear;
     
-    text-align: center;
+    .label{
+        margin-bottom: px;
+        color: red;
+        span{
+            color: white;            
+            font-size: 1.2em;
+        }
+    }
+
+    .label.center{
+        padding-top: 20px;
+
+        text-align: center;
+
+        .cast{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
 
 
-    .language{
+    .label.language{
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        padding-top: 20px;
         img{
-            width: 16px;
+            // width: 16px;
         }
     }
+
+    .label.vote{
+        position: absolute;
+
+        padding-bottom: 20px;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+
+
 }
 
 #item-info:hover{
     opacity: 1;
 }
 
-#tv-info{
-    border: 1px solid red;
-    padding: 5px;
-    margin-bottom: 5px;
-}
 
 
 </style>

@@ -1,6 +1,5 @@
 <script>
 import MovieItem from './MovieItem.vue';
-import TvItem from './TvItem.vue';
 
 import {store} from '../store.js'
 
@@ -10,7 +9,7 @@ export default {
     
     components: {
         MovieItem,
-        TvItem
+        
     },
 
     data() {
@@ -65,16 +64,6 @@ export default {
         </div>
 
         
-    
-        <!-- <div class="item-list">
-            <TvItem
-            v-for="currentTv in store.tvs"  
-            :tv="currentTv"
-            @mouseenter="$emit('tvInfo')"
-            ></TvItem>
-
-        </div> -->
-
 
     </div>
 
@@ -91,8 +80,9 @@ h2 {
 
 .item-list {
     display: flex;
-    gap: 30px;
-    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    // overflow-x: auto;
 
     padding: 20px;
 }
