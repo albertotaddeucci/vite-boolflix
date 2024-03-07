@@ -15,6 +15,13 @@ export default {
             
         }
     },
+    methods:{
+        getFlag(flag){
+            const url = "https://flagcdn.com/16x12/ua.png"
+            const newUrl = url.slice(0,-6) + flag + ".png"
+            return newUrl
+        }
+    }
 
         
 }
@@ -34,6 +41,7 @@ export default {
                 Titolo: {{ tv.name }}
             </div>        
             <div>
+                <img :src="this.getFlag(tv.original_language)" alt="">
                 Lingua: {{ tv.original_language }}            
                 
     

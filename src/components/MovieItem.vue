@@ -11,11 +11,22 @@ export default {
 
     data() {
         return {
-            store,  
+            store, 
+            
                      
             
         }
     },
+
+    methods:{
+        getFlag(flag){
+            const url = "https://flagcdn.com/16x12/ua.png"
+            const newUrl = url.slice(0,-6) + flag + ".png"
+            return newUrl
+        }
+    }
+
+
 
         
 }
@@ -40,6 +51,9 @@ export default {
     
             </div>       
             <div>
+
+                <img :src="this.getFlag(movie.original_language)"            
+                >
                 Lingua: {{ movie.original_language }}               
     
             </div>
