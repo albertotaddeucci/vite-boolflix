@@ -1,46 +1,46 @@
 <script>
-import jsonFlags from '../data/all-flags.json'
-import {store} from '../store.js'
+// import jsonFlags from '../data/all-flags.json'
+// import {store} from '../store.js'
 
 
 export default {
-    name: "TvItem",
+    // name: "TvItem",
     
-    props:{
-        tv: Object,
+    // props:{
+    //     tv: Object,
         
-    },
+    // },
 
-    data() {
-        return {
-            store,   
-            flagName: jsonFlags,
-            newUrl: "",        
+    // data() {
+    //     return {
+    //         store,   
+    //         flagName: jsonFlags,
+    //         newUrl: "",        
             
-        }
-    },
-    methods:{
-        getFlag(flag){   
+    //     }
+    // },
+    // methods:{
+    //     getFlag(flag){   
             
-            const key = flag
-            if(this.flagName.hasOwnProperty(key)){
-                const url = "https://flagcdn.com/16x12/ua.png"
-                this.newUrl = url.slice(0,-6) + flag + ".png"
+    //         const key = flag
+    //         if(this.flagName.hasOwnProperty(key)){
+    //             const url = "https://flagcdn.com/16x12/ua.png"
+    //             this.newUrl = url.slice(0,-6) + flag + ".png"
                 
-                return this.newUrl
+    //             return this.newUrl
 
-            } else {
-                return this.newUrl =""
-            }
+    //         } else {
+    //             return this.newUrl =""
+    //         }
 
             
              
-        },
-        getId(num){
-            store.tvId = num
+    //     },
+    //     getId(num){
+    //         store.tvId = num
 
-        }
-    }
+    //     }
+    // }
 
         
 }
@@ -49,8 +49,11 @@ export default {
 </script>
 
 <template>
+    <div>
+        ciaa
+    </div>
 
-    <div class="item" @mouseenter="this.getId(tv.id)">
+    <!-- <div class="item" @mouseenter="this.getId(tv.id)">
 
         <img :src="store.url + tv.poster_path" alt="">
 
@@ -87,7 +90,7 @@ export default {
             
         </div>
 
-    </div>
+    </div> -->
 
 
     

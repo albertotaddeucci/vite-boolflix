@@ -15,10 +15,7 @@ export default {
         return {
             store, 
             flagName: jsonFlags,
-            newUrl: "", 
-            
-            
-                     
+            newUrl: "",
             
         }
     },
@@ -60,19 +57,17 @@ export default {
         
         <img :src="store.url + movie.poster_path" alt="">
 
-        <div id="item-info">
-            
+        <div id="item-info">          
     
             <div>
-                Titolo: {{ movie.title }}
+                Titolo: {{ movie.title ? movie.title : movie.name }}
 
             </div> 
             <div>
-                Titolo originale: {{ movie.original_title }}               
+                Titolo originale: {{ movie.original_title ? movie.original_title : movie.original_name }}               
     
             </div>       
             <div class="language">
-
                 <div v-show="this.newUrl !=''">
                     <img  :src="this.getFlag(movie.original_language)" > 
 
@@ -89,6 +84,8 @@ export default {
 
             </div>
             <span v-for="actor in store.movieCast"> {{ actor.name }}</span>
+            <!-- <span v-for="actor in store.tvCast"> {{ actor.name }}</span> -->
+
     
             
         </div>

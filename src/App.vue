@@ -36,11 +36,11 @@ export default {
           this.store.movies.forEach(el => {
             el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
             
-
-
+            
             
           });
-        
+          
+          console.log(res.data.results)
         
         }),
         axios.get('https://api.themoviedb.org/3/search/tv?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
@@ -64,27 +64,33 @@ export default {
         
         axios.get(`https://api.themoviedb.org/3/movie/${store.movieId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
+          store.movieCast = res.data.cast.slice(0,5)
           
-         store.movieCast = res.data.cast.slice(0,5)
         
         
-        })
+        });
+        
         
         
 
       },
-      tvInfo(){
-        axios.get(`https://api.themoviedb.org/3/tv/${store.tvId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
-        .then(result =>{
+      
+
+      // filterMovie(){
+      //   console.log("ciao")
+      //   store.movies.forEach(element => {
+
+
+      //     store.filtered.push(element.genre_ids.includes(store.selected))
+
+      //     console.log(store.filtered)
           
-         store.tvCast = result.data.cast.slice(0,5)
-         
+          
+      //   });
 
-        
-        
-        })
 
-      },
+
+      // },
   
       //arrotondamento e conversione voto max da 10 a 5
       convertTo5(num){
@@ -107,6 +113,20 @@ export default {
 
 
     },
+
+    // created(){
+  
+    //    axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+    //     .then(res =>{
+    //       console.log(res.data.genres)
+    //       // console.log(store.selected)
+    //       this.store.genres = res.data.genres
+
+
+    //     })
+
+        
+    // }
     
     
 
@@ -122,8 +142,8 @@ export default {
 
 <template>
 
-  <AppHeader @search="serchMovie"></AppHeader>
-  <AppMain @info="movieInfo" @tvInfo="tvInfo"></AppMain>
+  <AppHeader @search="serchMovie" ></AppHeader>
+  <AppMain @info="movieInfo" ></AppMain>
 
 
 </template>

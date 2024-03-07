@@ -32,6 +32,8 @@ export default {
                 <button @click="$emit('search')">Cerca</button>
             </div>
 
+            
+
 
         </div>
 

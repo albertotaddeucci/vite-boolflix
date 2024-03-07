@@ -11,8 +11,8 @@ export const store = reactive({
     tvId: 0,
     tvCast: [],
 
-
-
+    genres: [],
+    selected: '',
 
 
     movieToSearch: '',
