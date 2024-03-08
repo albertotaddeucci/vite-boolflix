@@ -114,8 +114,9 @@ export default {
                     
         })
         
-      }
+      },
 
+      
     },
 
     created(){
@@ -140,7 +141,7 @@ export default {
 
 <template>
 
-  <AppHeader @search="serchMovie" @home="createHome"></AppHeader>
+  <AppHeader @search="serchMovie" @home="createHome" @clear="createHome"></AppHeader>
   <AppMain @filter="filterMovie" ></AppMain>
 
 

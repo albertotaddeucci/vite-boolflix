@@ -13,6 +13,16 @@ export default {
       }
     },
 
+    methods:{
+        inputEmpty(){
+            if(store.movieToSearch ==''){
+                this.$emit('clear')
+                
+            }
+        }
+
+    }
+
     
 }
 
@@ -44,7 +54,7 @@ export default {
 
             <div class="right-nav">
                 <div id="search-bar">
-                    <input type="search" v-model="store.movieToSearch" placeholder="search">
+                    <input type="search" v-model="store.movieToSearch" placeholder="search" @input="inputEmpty">
                     <button @click="$emit('search')">Cerca</button>
                 </div>
 
