@@ -30,7 +30,7 @@ export default {
             <div class="left-nav">
 
                 <div id="logo">
-                    <img src="/public/img/c889f5a620a7714ff1d7ba890a24079d.png" alt="">
+                    <img src="/img/c889f5a620a7714ff1d7ba890a24079d.png" alt="">
                 </div>
     
                 <ul class="link-list">
@@ -52,7 +52,7 @@ export default {
                 </div>
 
                 <div>
-                    <img src="/public/img/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg" alt="">
+                    <img src="/img/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg" alt="">
                 </div>
 
 

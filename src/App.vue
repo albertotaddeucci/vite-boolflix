@@ -48,7 +48,6 @@ export default {
         
         })
 
-        store.movieToSearch="";        
         
       },
 
@@ -61,16 +60,12 @@ export default {
         
         
         });
-        
-        
-        
+             
 
       },
       
 
       filterMovie(){
-
-
 
         store.movieFiltered=[];
         store.tvFiltered=[];
@@ -78,10 +73,10 @@ export default {
         axios.get('https://api.themoviedb.org/3/search/multi?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(res =>{
         
-          this.store.allItems = res.data.results
-
+          this.store.allItems = res.data.results          
           
           this.store.allItems.forEach(element => {
+
             
             if(element.genre_ids.includes(store.selected) && element.media_type=="movie"){  
               store.movieFiltered.push(element)
@@ -91,7 +86,6 @@ export default {
             }
             
           });
-
           
           return this.store.movies=this.store.movieFiltered, this.store.tvs=this.store.tvFiltered
           
@@ -117,59 +111,25 @@ export default {
         axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
           this.store.movies = res.data.results.slice(0,4)
-          
-          
+                    
         })
         
-        
-        
-
       }
-
-  
-       
 
     },
 
     created(){
-      let movieGenres
-      let tvGenres
-      let allGenres
-
-      this.createHome()
-
-
       
+      this.createHome()     
   
       axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
           store.genres = res.data.genres
 
       })
-      // axios.get(`https://api.themoviedb.org/3/genre/tv/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
-      //   .then(res =>{
-      //     tvGenres = res.data.genres
-      //     console.log(tvGenres)
-
-          
-          
-      //     allGenres = movieGenres.concat(tvGenres)
-      //     store.genres = allGenres.filter((el,index)=>{ store.genres.indexOf(el)==index})
-
-          
-      //     console.log(store.genres)
-      // })
-
-
-      
-
-        
+                  
     }
-    
-    
-
-    
-
+           
 }
 
     

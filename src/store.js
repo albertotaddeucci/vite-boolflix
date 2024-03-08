@@ -4,7 +4,7 @@ export const store = reactive({
 
     isHomeActive: true,
 
-    // allItems: [],
+    allItems: [],
     movies: [],
     tvs: [],
 
@@ -20,6 +20,8 @@ export const store = reactive({
     tvFiltered: [],
 
     stars: [],
+
+    ciao: "ciao",
 
 
     movieToSearch: '',

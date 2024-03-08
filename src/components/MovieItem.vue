@@ -27,14 +27,24 @@ export default {
     methods:{
         getFlag(flag){   
             
-            const key = flag
-            if(this.flagName.hasOwnProperty(key)){
+            if(flag == "en"){
+                return this.newUrl = "https://flagcdn.com/32x24/gb.png"
+
+            } else if (flag == "ja"){
+                return this.newUrl = "https://flagcdn.com/32x24/jp.png"
+
+            }
+            else if (flag == "ko"){
+                return this.newUrl = "https://flagcdn.com/32x24/kr.png"
+
+            }
+            else if(this.flagName.hasOwnProperty(flag)){
                 const url = "https://flagcdn.com/32x24/ua.png"
                 this.newUrl = url.slice(0,-6) + flag + ".png"
-                
+
                 return this.newUrl
 
-            } else {
+            } else  {
                 return this.newUrl =""
             }            
              
@@ -198,7 +208,7 @@ export default {
         color: red;
         span{
             color: white;            
-            font-size: 1.2em;
+            font-size: 1em;
         }
     }
 
