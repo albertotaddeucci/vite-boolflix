@@ -21,9 +21,6 @@ export const store = reactive({
 
     stars: [],
 
-    ciao: "ciao",
-
-
     movieToSearch: '',
 
     url: "https://image.tmdb.org/t/p/w342",

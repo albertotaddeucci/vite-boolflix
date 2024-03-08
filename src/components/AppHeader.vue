@@ -8,13 +8,10 @@ export default {
 
     data(){
       return{
-         store,    
-                  
+         store,                      
 
       }
     },
-
-    
 
     
 }
@@ -81,7 +78,7 @@ export default {
     }
 
     .link-list{
-        margin-left: 70px;
+        margin-left: 40px;
         color: white;
         display: flex;
         list-style: none;
@@ -141,6 +138,16 @@ nav{
 
 
 @media only screen and (max-width: 1200px) {
+
+    #logo{
+        img{
+
+            width: 150px;
+
+        }
+    }
+
+    
 
     li:not(:first-of-type){
         display: none;
