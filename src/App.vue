@@ -34,14 +34,14 @@ export default {
 
         
 
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
+        axios.get('https://api.themoviedb.org/3/search/movie?language=it-IT&api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(res =>{
           
           this.store.movies = res.data.results               
         
         }),
 
-        axios.get('https://api.themoviedb.org/3/search/tv?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
+        axios.get('https://api.themoviedb.org/3/search/tv?language=it-IT&api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(result =>{
           
           this.store.tvs = result.data.results                
@@ -108,7 +108,7 @@ export default {
         
         this.timer = setInterval(this.slideShow,3000)
         
-        axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        axios.get(`https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{
           this.store.movies = res.data.results.slice(0,4)
                     

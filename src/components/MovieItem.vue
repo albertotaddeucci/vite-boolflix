@@ -51,7 +51,6 @@ export default {
         },
 
         getId(num){
-
             store.movieId = num
             
         },
@@ -84,11 +83,8 @@ export default {
             });
 
         },
-
         
     }
-
-
 
         
 }
@@ -101,6 +97,7 @@ export default {
     <div class="item" @mouseenter="this.getId(movie.id)" @mouseleave="turnOffCast()">
         
         <img :src="store.url + movie.poster_path" alt="" class="backdrop">
+        
 
         <div id="item-info">          
     

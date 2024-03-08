@@ -14,8 +14,7 @@ export default {
 
     data() {
         return {
-            store,            
-            
+            store,
             
         }
     },
@@ -40,7 +39,7 @@ export default {
         </div>
 
         <!-- barra filtri -->
-        <div v-show="store.isHomeActive==false" id="filter">
+        <div v-show="store.isHomeActive==false " id="filter">
             Filtra per genere:
             <select id="select" v-model="store.selected" @change="$emit('filter')" >
                 <option disabled value="">Seleziona un genere</option>
@@ -115,6 +114,7 @@ export default {
         left: 5%;
         font-size: 5em;
         font-weight: bold;
+        
         
     }
     
