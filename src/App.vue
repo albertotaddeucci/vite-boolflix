@@ -35,12 +35,10 @@ export default {
 
           this.store.movies.forEach(el => {
             el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
-            
-           
+                      
             
           });
-
-        
+       
         
         }),
 
@@ -52,11 +50,11 @@ export default {
           this.store.tvs.forEach(el => {
             el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
             
-          });
-        
+          });        
         
         })
-        
+
+        store.movieToSearch="";        
         
       },
 
@@ -177,7 +175,7 @@ export default {
 <template>
 
   <AppHeader @search="serchMovie" ></AppHeader>
-  <AppMain @info="movieInfo" @filter="filterMovie" ></AppMain>
+  <AppMain @filter="filterMovie" ></AppMain>
 
 
 </template>

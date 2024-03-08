@@ -27,7 +27,9 @@ export default {
 
             <div class="left-nav">
 
-                <div id="logo">logo</div>
+                <div id="logo">
+                    <img src="/public/img/c889f5a620a7714ff1d7ba890a24079d.png" alt="">
+                </div>
     
                 <ul class="link-list">
                     <li>Home</li>
@@ -41,13 +43,18 @@ export default {
             </div>
 
 
-            <div id="search-bar">
-                <input type="search" v-model="store.movieToSearch" placeholder="search">
-                <button @click="$emit('search')">Cerca</button>
+            <div class="right-nav">
+                <div id="search-bar">
+                    <input type="search" v-model="store.movieToSearch" placeholder="search">
+                    <button @click="$emit('search')">Cerca</button>
+                </div>
+
+                <div>
+                    <img src="/public/img/netflix-profile-pictures-1000-x-1000-88wkdmjrorckekha.jpg" alt="">
+                </div>
+
+
             </div>
-
-            
-
 
         </div>
 
@@ -68,6 +75,7 @@ export default {
 
     .left-nav{
         display: flex;
+        align-items: center;
     }
 
     .link-list{
@@ -88,15 +96,33 @@ export default {
         }
     }
 
+    .right-nav{
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        img{
+            width: 50px;
+            cursor: pointer;
+        
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+
 }
 
 #logo{
     color: white;
+    img{
+        width: 200px;
+        
+    }
 }
 
 nav{
     background-color: black;
-    padding-block: 30px;
+    padding-block: 5px;
 }
 
 #search-bar{
