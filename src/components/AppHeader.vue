@@ -12,7 +12,9 @@ export default {
                   
 
       }
-  },
+    },
+
+    
 
     
 }
@@ -32,7 +34,7 @@ export default {
                 </div>
     
                 <ul class="link-list">
-                    <li>Home</li>
+                    <li @click="$emit('home')">Home</li>
                     <li>Serie Tv</li>
                     <li>Film</li>
                     <li>Originali</li>
@@ -136,6 +138,16 @@ nav{
     }
 
 }
+
+
+@media only screen and (max-width: 1200px) {
+
+    li:not(:first-of-type){
+        display: none;
+    }
+  
+}
+
 
 
 </style>

@@ -90,7 +90,7 @@ export default {
 
     <div class="item" @mouseenter="this.getId(movie.id)" @mouseleave="turnOffCast()">
         
-        <img :src="store.url + movie.poster_path" alt="">
+        <img :src="store.url + movie.poster_path" alt="" class="backdrop">
 
         <div id="item-info">          
     
@@ -164,15 +164,15 @@ export default {
 
 .item{
     position: relative;
-    width: 300px;
+    width: 250px;
 
-    img{
-        width: 100%;
-        
-        object-fit: contain;
-        display: block;
-        
-    }
+}
+.backdrop{
+    width: 100%;
+    
+    object-fit: cover;
+    display: block;
+    
 }
 
 #item-info{

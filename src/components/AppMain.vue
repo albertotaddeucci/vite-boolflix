@@ -101,22 +101,24 @@ export default {
 @use '../styles/general' as *;
 
 #jumbo{
+    margin: 0 auto;
+    position: relative;
+
 
     #title{
+        
         position: absolute;
-        top: 10%;
+        top: 5%;
         left: 5%;
         font-size: 5em;
+
         
     }
-    margin: 0 auto;
-    // height: 1000px;
-    // height: calc(100vh - 80px);
+    
     img{
-        height: 100%;
+        width: 100%;
         display: block;
-        object-fit: fill;
-        // overflow: hidden;
+        object-fit: cover;
     }
 }
 
@@ -134,12 +136,6 @@ h2 {
     padding: 20px;
 }
 
-
-#popular{
-    position: absolute;
-    top:50%;
-    left: 50;
-}
 
 
 

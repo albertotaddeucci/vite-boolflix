@@ -16,6 +16,7 @@ export default {
     data() {
         return {
             store,
+
             
         }
     },
@@ -25,6 +26,9 @@ export default {
     methods:{
       
       serchMovie(){
+
+        clearInterval(this.timer)
+
 
         store.isHomeActive=false
 
@@ -66,6 +70,8 @@ export default {
 
       filterMovie(){
 
+
+
         store.movieFiltered=[];
         store.tvFiltered=[];
                
@@ -99,7 +105,27 @@ export default {
         if(store.slideIndex==4){
           store.slideIndex = 0
         }
+      },
+
+      createHome(){
+        
+        store.isHomeActive=true
+        this.store.movies = []
+        
+        this.timer = setInterval(this.slideShow,3000)
+        
+        axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        .then(res =>{
+          this.store.movies = res.data.results.slice(0,4)
+          
+          
+        })
+        
+        
+        
+
       }
+
   
        
 
@@ -110,14 +136,7 @@ export default {
       let tvGenres
       let allGenres
 
-      setInterval(this.slideShow,3000)
-
-      axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
-        .then(res =>{
-          this.store.movies = res.data.results.slice(0,4)
-
-
-      })
+      this.createHome()
 
 
       
@@ -161,13 +180,15 @@ export default {
 
 <template>
 
-  <AppHeader @search="serchMovie" ></AppHeader>
+  <AppHeader @search="serchMovie" @home="createHome"></AppHeader>
   <AppMain @filter="filterMovie" ></AppMain>
 
 
 </template>
 
 <style>
+
+
 
 
 </style>
