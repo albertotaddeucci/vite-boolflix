@@ -15,6 +15,7 @@ export default {
     data() {
         return {
             store, 
+           
             
             
         }
@@ -27,17 +28,41 @@ export default {
 
 <template>
 
+    
     <div class="container">
-
         
-        <div>
+        <div id="jumbo" v-show="store.isHomeActive==true">
+            <div v-for="currentMovie,index in store.movies" >
+                <div v-show="store.slideIndex==index" id="title"><span>{{ currentMovie.title }}</span></div>
+                <img v-show="store.slideIndex==index" :src="store.urlBg + currentMovie.backdrop_path" alt="">
+    
+            </div>
+        </div>
+        
+        <!-- <div>
             <select id="select" v-model="store.selected" @change="$emit('filter')" >
                 <option disabled value="">Seleziona un genere</option>
                 <option  v-for="genre in store.genres" :value="genre.id">{{genre.name}}</option>
                 
             </select>
+        </div> -->
+
+
+        <div v-show="store.isHomeActive==true" id="popular">
+            <h2>Most popular</h2>
+            <div class="item-list">
+                <MovieItem
+                v-for="currentMovie in store.movies" 
+                :movie="currentMovie"
+                @mouseenter="$emit('info')"
+                >
+                </MovieItem>            
+            
+            </div>
         </div>
-        <div v-show="store.movies.length!=0">
+
+
+        <div v-show="store.movies.length!=0 && store.isHomeActive==false">
             <h2>Movies</h2>
             <div class="item-list">
                 <MovieItem
@@ -51,7 +76,7 @@ export default {
 
         </div>
         
-        <div v-show="store.tvs.length!=0">
+        <div v-show="store.tvs.length!=0 && store.isHomeActive==false">
             <h2>Tv Series</h2>
             <div class="item-list">
                 <MovieItem
@@ -75,6 +100,26 @@ export default {
 <style lang="scss">
 @use '../styles/general' as *;
 
+#jumbo{
+
+    #title{
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        font-size: 5em;
+        
+    }
+    margin: 0 auto;
+    // height: 1000px;
+    // height: calc(100vh - 80px);
+    img{
+        height: 100%;
+        display: block;
+        object-fit: fill;
+        // overflow: hidden;
+    }
+}
+
 h2 {
     margin-top: 30px;
     font-size: 30px;
@@ -85,11 +130,16 @@ h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    // overflow-x: auto;
 
     padding: 20px;
 }
 
+
+#popular{
+    position: absolute;
+    top:50%;
+    left: 50;
+}
 
 
 

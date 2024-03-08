@@ -46,6 +46,19 @@ export default {
             
         },
 
+        transformToStar(num){
+            const max = Math.round(num)/2
+            let i = 0;
+            let star = [];
+                while (i < max) {
+                    star.push('fa-solid fa-star');          
+                    i++;
+            
+                };
+
+            return star
+        },
+
         turnOffCast(){
             this.castOn = false
         },
@@ -115,6 +128,8 @@ export default {
                 </div>
                 
             </div>
+
+                        
             <button @click="movieInfo()">Vedi cast</button>
             
             <div id="cast-list" class="label center" v-show="castOn == true">
@@ -127,9 +142,10 @@ export default {
             </div>
 
             <div class="label vote">
-                {{ movie.vote_average }}
+                <i v-for="star in transformToStar(movie.vote_average)" :class="star"></i>
 
             </div>
+            
 
             
             
@@ -143,6 +159,8 @@ export default {
 </template>
 
 <style lang="scss">
+@use '../styles/mixins' as *;
+
 
 .item{
     position: relative;
@@ -150,6 +168,7 @@ export default {
 
     img{
         width: 100%;
+        
         object-fit: contain;
         display: block;
         
@@ -157,6 +176,9 @@ export default {
 }
 
 #item-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
         
     position: absolute;
     top: 0;
@@ -220,14 +242,22 @@ export default {
     .label
     
         .genre{
-         ul{
-           list-style: none;
-           color: white;
-           padding-left: 10px;
-    
-        }
-    }
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 30px;
 
+         ul{
+                list-style: none;
+                color: white;
+    
+            }
+    }
+    
+    .genre-list{
+        display: flex;
+    }
     .label.vote{
         position: absolute;
 
@@ -235,12 +265,17 @@ export default {
         bottom: 0px;
         left: 50%;
         transform: translateX(-50%);
+
+        color: yellow
     }
 
-    .genre-list{
-        display: flex;
-    }
 
+    button{
+        @include btn_primary;
+        
+
+        
+    }
 
 
 

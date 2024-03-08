@@ -26,31 +26,21 @@ export default {
       
       serchMovie(){
 
+        store.isHomeActive=false
+
         
 
         axios.get('https://api.themoviedb.org/3/search/movie?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(res =>{
           
-          this.store.movies = res.data.results
-
-          this.store.movies.forEach(el => {
-            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
-                      
-            
-          });
-       
+          this.store.movies = res.data.results               
         
         }),
 
         axios.get('https://api.themoviedb.org/3/search/tv?api_key=7435d4db019da203e03d5023f0eccd1c&query=' + this.store.movieToSearch )
         .then(result =>{
           
-          this.store.tvs = result.data.results
-
-          this.store.tvs.forEach(el => {
-            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))
-            
-          });        
+          this.store.tvs = result.data.results                
         
         })
 
@@ -96,10 +86,6 @@ export default {
             
           });
 
-          this.store.movieFiltered.forEach(el => {
-            el.vote_average = this.transformToStar(this.convertTo5(el.vote_average))     
-
-          });
           
           return this.store.movies=this.store.movieFiltered, this.store.tvs=this.store.tvFiltered
           
@@ -107,26 +93,15 @@ export default {
 
 
       },
-  
-      //arrotondamento e conversione voto max da 10 a 5
-      convertTo5(num){
-        return Math.round(num)/2
 
-      },
-
-      //trasformazione da numero a stelle
-      transformToStar(num){
-        let i = 0;
-        let star = "";
-        while (i < num) {
-          star += "⭐";          
-          i++;
-          
-        };
-
-        return star
+      slideShow(){
+        store.slideIndex++
+        if(store.slideIndex==4){
+          store.slideIndex = 0
+        }
       }
-
+  
+       
 
     },
 
@@ -134,6 +109,18 @@ export default {
       let movieGenres
       let tvGenres
       let allGenres
+
+      setInterval(this.slideShow,3000)
+
+      axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=7435d4db019da203e03d5023f0eccd1c`)
+        .then(res =>{
+          this.store.movies = res.data.results.slice(0,4)
+
+
+      })
+
+
+      
   
       axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
         .then(res =>{

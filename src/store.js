@@ -2,14 +2,15 @@ import { reactive } from 'vue'
 
 export const store = reactive({
 
-    allItems: [],
+    isHomeActive: true,
+
+    // allItems: [],
     movies: [],
     tvs: [],
 
     movieId: 0,
     movieCast: [],
 
-    tvId: 0,
     tvCast: [],
 
     genres: [],
@@ -23,7 +24,10 @@ export const store = reactive({
 
     movieToSearch: '',
 
-    url: "https://image.tmdb.org/t/p/w342"
+    url: "https://image.tmdb.org/t/p/w342",
+
+    slideIndex: 0,
+    urlBg: "https://image.tmdb.org/t/p/w1280"
 
 
 
