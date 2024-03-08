@@ -50,19 +50,6 @@ export default {
 
         
       },
-
-      movieInfo(){
-
-        
-        axios.get(`https://api.themoviedb.org/3/movie/${store.movieId}/credits?language=en-US?&api_key=7435d4db019da203e03d5023f0eccd1c`)
-        .then(res =>{
-          store.movieCast = res.data.cast.slice(0,5)         
-        
-        
-        });
-             
-
-      },
       
 
       filterMovie(){
@@ -90,7 +77,6 @@ export default {
           return this.store.movies=this.store.movieFiltered, this.store.tvs=this.store.tvFiltered
           
         })   
-
 
       },
 
@@ -130,6 +116,12 @@ export default {
           store.genres = res.data.genres
 
       })
+      // ,
+      // axios.get(`https://api.themoviedb.org/3/genre/tv/list?language=en?&api_key=7435d4db019da203e03d5023f0eccd1c`)
+      //   .then(res =>{
+      //     store.genres.push(res.data.genres)
+
+      // })
                   
     }
            
