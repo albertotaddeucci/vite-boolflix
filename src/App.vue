@@ -102,6 +102,8 @@ export default {
       },
 
       createHome(){
+        clearInterval(this.timer)
+
         
         store.isHomeActive=true
         this.store.movies = []
